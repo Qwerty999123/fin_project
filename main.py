@@ -91,7 +91,7 @@ def build_gemini_prompt(question: str, clauses: List[dict]) -> str:
 #     sentences = re.split(r'(?<=[.!?])\s+', text.strip())
 #     return sentences[0] if sentences else text
 
-@app.post("/query", response_model=QueryResponse)
+@app.post("/hackrx/run", response_model=QueryResponse)
 async def answer_questions(request: Request, body: QueryRequest):
     # Authentication
     if request.headers.get("Authorization") != f"Bearer {os.environ['API_KEY']}":
@@ -138,3 +138,4 @@ async def answer_questions(request: Request, body: QueryRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=str(e)
         )
+
