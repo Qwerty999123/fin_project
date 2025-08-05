@@ -69,22 +69,22 @@ def build_gemini_prompt(question: str, clauses: List[dict]) -> str:
         for c in clauses
     )
     
-    return f"""You are a strict, accurate assistant that answers insurance or policy-related questions using only provided clauses.
+    return f"""
+    You are a strict, accurate assistant that answers insurance or policy-related questions using only provided clauses.
 
         A user has asked the following question:
-        "{question}"
-
+        '{question}'
+    
         You must answer only based on the given text below, without guessing or skipping any information.
         If an answer is partially stated or implied, respond accordingly with brief clarification.
-        If the information is not present at all, reply exactly: "Not mentioned in the provided clauses."
-
+        If the information is not present at all, reply exactly: 'Not mentioned in the provided clauses.'
+    
         Clauses:
         {context}
-
+    
         Respond with 1 to 3 sentences max.
         Do not add explanations, formatting, bullet points, summaries, or any output other than the answer sentence.
-
-"""
+    """
 
 # def extract_first_sentence(text: str) -> str:
 #     """Ensure single-sentence output"""
